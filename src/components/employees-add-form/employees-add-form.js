@@ -12,14 +12,21 @@ class EmployeesAddForm extends Component {
         }
     }
 
-    onValueChange = (e) => {        
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    onValueChange = (e) => {
+        
+            this.setState({
+                [e.target.name]: e.target.value
+            })
+        
+        
     }
 
    onSubmit = (e) => {
     e.preventDefault();
+    if (this.state.name.length < 3 || this.state.salary === '') {
+        alert('Не заполнено поле ввода либо длина меньше трёх символов') 
+        return
+    };
     this.props.onAdd(this.state.name, this.state.salary);
     this.setState({
         name: '',
@@ -64,3 +71,11 @@ class EmployeesAddForm extends Component {
 
  
 export default EmployeesAddForm;
+
+
+
+
+
+
+
+
